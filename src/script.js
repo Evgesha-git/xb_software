@@ -60,12 +60,12 @@ class Tags{
     }
 
     getId(){
-        let noteId = Math.floor(Math.random() * 100);
-        if(this.tags) return noteId;
-        if (this.tags.some(data => data.id === noteId)){
+        let tagId = Math.floor(Math.random() * 100);
+        if(this.tags) return tagId;
+        if (this.tags.some(data => data.id === tagId)){
             this.getId()
         }else{
-            return noteId
+            return tagId;
         }
     }
 
@@ -82,18 +82,9 @@ class Tags{
             if (item.obj.id === id){
                 item.obj.readOnly = !item.obj.readOnly;
             }
-        })
+        });
     }
 }
-
-// let tags = new Tags()
-
-// tags.add({
-//     text: 'text',
-//     readOnly: true
-// })
-
-// console.log(tags.getTags())
 
 class TagsUi extends Tags{
     constructor(entryPoint){
@@ -122,7 +113,7 @@ class TagsUi extends Tags{
         addButton.setAttribute('type', 'submith');
         addButton.innerText = 'Add Tag';
 
-        form.addEventListener('submit', e => this.addTag(e, inputTags, readOnlyCheck))
+        form.addEventListener('submit', e => this.addTag(e, inputTags, readOnlyCheck));
 
         form.append(inputTags, readOnlyCheck, addButton);
 
@@ -162,7 +153,10 @@ class TagsUi extends Tags{
 
     addTag(e, input, check){
         e.preventDefault();
-        let tag = {text: input.value, readOnly: check.checked}
+        let tag = {
+            text: input.value, 
+            readOnly: check.checked,
+        };
         input.value = '';
         check.checked = false;
         this.add(tag);
@@ -179,4 +173,8 @@ class TagsUi extends Tags{
     }
 }
 
-new TagsUi('#root')
+new TagsUi('#root');
+
+/**
+ * Были не доконца поняты некоторые момента, а  именно - каким образом задавать состояние read only, при создании записи или же вызовом модалки
+ */
