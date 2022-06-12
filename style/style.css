@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-size: 18px;
+    font-family:'Times New Roman', Times, serif;
+}
+
+#root{
+    margin: 0 auto;
+    width: 500px;
+}
+
+.tags_form{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.tags_form input[type=text]{
+    width: 350px;
+    height: 40px;
+    font-size: 22px;
+}
+
+.tags_form button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: rgba(109, 109, 109, 0.921);
+}
+
+.tag{
+    position: relative;
+    border: 1px solid green;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
+
+.tag .button_del{
+    position: absolute;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: rgb(1, 111, 1);
+}
+
+.tag .button_del:disabled{
+    cursor: not-allowed;
+    color: rgba(60, 70, 60, 0.645);
+}
